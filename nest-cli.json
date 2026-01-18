@@ -9,6 +9,11 @@
                 "include": "../proto",
                 "outDir": "dist/proto",
                 "watchAssets": true
+            },
+            {
+                "include": "../keys",
+                "outDir": "dist/keys",
+                "watchAssets": true
             }
         ]
     }
