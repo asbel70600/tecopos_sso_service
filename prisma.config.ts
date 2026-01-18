@@ -11,6 +11,6 @@ export default defineConfig({
     datasource: {
         url:
             process.env["DATABASE_URL"] ||
-            "postgresql://user:password@localhost:5432/mydb?schema=public",
+            "postgresql://asbel:asbel@sso-db:5432/sso_auth",
     },
 });
