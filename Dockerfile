@@ -6,6 +6,7 @@ RUN --mount=type=cache,target=/root/.npm \
     npm install
 COPY . .
 RUN npx prisma generate
+RUN npx prisma migrate deploy
 RUN npm run build
 
 
@@ -17,7 +18,6 @@ RUN --mount=type=cache,target=/root/.npm \
 COPY --from=development /app/dist ./dist
 COPY --from=development /app/prisma ./prisma
 
-RUN npx prisma generate
 EXPOSE 3000
 
 CMD ["node", "dist/src/main"]

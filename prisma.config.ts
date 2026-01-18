@@ -10,6 +10,7 @@ export default defineConfig({
     },
     datasource: {
         url:
-            process.env["DATABASE_URL"] || "postgresql://localhost:5432/sso_db",
+            process.env["DATABASE_URL"] ||
+            "postgresql://user:password@localhost:5432/mydb?schema=public",
     },
 });
