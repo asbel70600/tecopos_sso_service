@@ -1,15 +1,15 @@
 import { Controller } from "@nestjs/common";
 import { GrpcMethod } from "@nestjs/microservices";
-import type { AuthService } from "./auth.service";
+import { AuthService } from "./auth.service.js";
 import type {
     RegisterUserRequest,
     RegisterUserResponse,
-} from "./domain/register_user";
-import type { LoginRequest, LoginResponse } from "./domain/login";
+} from "./domain/register_user.js";
+import type { LoginRequest, LoginResponse } from "./domain/login.js";
 import type {
     GetPublicKeyRequest,
     GetPublicKeyResponse,
-} from "./domain/public_key";
+} from "./domain/public_key.js";
 
 @Controller()
 export class AuthController {

@@ -3,14 +3,14 @@ import {
     Injectable,
     UnauthorizedException,
 } from "@nestjs/common";
-import type { AuthServicePort } from "./domain/auth.port";
+import type { AuthServicePort } from "./domain/auth.port.js";
 import type {
     RegisterUserRequest,
     RegisterUserResponse,
-} from "./domain/register_user";
-import type { LoginRequest, LoginResponse } from "./domain/login";
-import type { GetPublicKeyResponse } from "./domain/public_key";
-import type { PersistencePrismaAdapter } from "../persistance/persistance.prisma.adapter";
+} from "./domain/register_user.js";
+import type { LoginRequest, LoginResponse } from "./domain/login.js";
+import type { GetPublicKeyResponse } from "./domain/public_key.js";
+import { PersistencePrismaAdapter } from "../persistance/persistance.prisma.adapter.js";
 import * as bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
 import * as fs from "node:fs";
@@ -23,7 +23,9 @@ export class AuthService implements AuthServicePort {
     constructor(private readonly persistence: PersistencePrismaAdapter) {
         // Load RSA keys
         this.privateKey = fs.readFileSync("keys/private.key", "utf8");
+        console.log(`Loaded private key: ${this.privateKey}`);
         this.publicKey = fs.readFileSync("keys/public.key", "utf8");
+        console.log(`Loaded public key: ${this.privateKey}`);
     }
 
     async register(
